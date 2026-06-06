@@ -19,6 +19,8 @@ execute:
   message: false
 editor: visual
 jupyter: python3
+project: 
+  type: website
 ---
 
 # Introduction to the 5 Platonic solids
@@ -27,8 +29,8 @@ Platonic solids are a special class of highly symmetric three-dimensional geomet
 
 A Platonic solid is a **regular convex polyhedron** satisfying the following conditions:
 
-- All faces are **congruent regular polygons**. 
-- The same number of faces meet at every vertex. 
+- All faces are **congruent regular polygons**.
+- The same number of faces meet at every vertex.
 - All edges are equal in length.
 - All vertices are geometrically identical.
 
@@ -1980,12 +1982,12 @@ This complete regularity distinguishes Platonic solids from other polyhedral fam
 The rotational symmetry groups of the Platonic solids are:
 
 | Platonic Solid | Rotational Symmetry Group |
-|---|---|
-| Tetrahedron | $A_4$ |
-| Cube | $S_4$ |
-| Octahedron | $S_4$ |
-| Dodecahedron | $A_5$ |
-| Icosahedron | $A_5$ |
+|----------------|---------------------------|
+| Tetrahedron    | $A_4$                     |
+| Cube           | $S_4$                     |
+| Octahedron     | $S_4$                     |
+| Dodecahedron   | $A_5$                     |
+| Icosahedron    | $A_5$                     |
 
 These symmetry groups explain the strong uniformity observed in Platonic solids and contribute significantly to their structured spectral properties.
 
@@ -1997,9 +1999,7 @@ If a Platonic solid has Schläfli symbol $\{p,q\}$, then every face is a $p$-gon
 
 For a $q$-regular graph,
 
-$$
-A\mathbf{1}=q\mathbf{1}
-$$
+$$A\mathbf{1}=q\mathbf{1}$$
 
 where $A$ is the adjacency matrix and $\mathbf{1}$ is the all-ones vector. Consequently, $q$ is always an eigenvalue of the adjacency matrix.
 
@@ -2009,13 +2009,9 @@ Every Platonic solid possesses a Platonic dual.
 
 The duality relationships are
 
-$$
-\text{Cube} \leftrightarrow \text{Octahedron}
-$$
+$$\text{Cube} \leftrightarrow \text{Octahedron}$$
 
-$$
-\text{Dodecahedron} \leftrightarrow \text{Icosahedron}
-$$
+$$\text{Dodecahedron} \leftrightarrow \text{Icosahedron}$$
 
 while the tetrahedron is **self-dual**.
 
