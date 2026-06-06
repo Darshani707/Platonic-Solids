@@ -173,5 +173,40 @@
     "title": "Platonic Solids",
     "section": "3.4 Spectral Properties",
     "text": "3.4 Spectral Properties\nThe regularity and symmetry of Platonic solids strongly influence the spectra of their adjacency and Laplacian matrices.\nSome immediate consequences include:\n\nthe largest adjacency eigenvalue equals the vertex degree,\nrepeated eigenvalues arising from symmetry,\nhighly structured eigenspaces,\nspectral patterns reflecting geometric regularity.\n\nThese spectral properties provide insight into connectivity, combinatorial structure, and symmetry, making spectral graph theory an effective tool for studying Platonic solids."
+  },
+  {
+    "objectID": "index.html#tetrahedron-1",
+    "href": "index.html#tetrahedron-1",
+    "title": "Platonic Solids",
+    "section": "9.1 Tetrahedron",
+    "text": "9.1 Tetrahedron\nPermutation on 4 vertices\n\n\n\n\n\n\n\n\n\n\nRotation Type\nNumber of Axes\nAngle\nPermutation Form\nCount\n\n\n\n\nIdentity\n-\n\\(0^\\circ\\)\n\\((a)(b)(c)(d)\\)\n1\n\n\nVertex-face axis\n4\n\\(120^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nVertex-face axis\n4\n\\(240^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nEdge axis\n3\n\\(180^\\circ\\)\n\\((a\\,b)(c\\,d)\\)\n3\n\n\n\nTotal count = 12 = \\(|A_4|\\)\nWe see that the rotation permutations are only even. Thus, $ Rot(Tetrahedron) A_4 $"
+  },
+  {
+    "objectID": "index.html#cube-1",
+    "href": "index.html#cube-1",
+    "title": "Platonic Solids",
+    "section": "9.2 Cube",
+    "text": "9.2 Cube\nPermutation on 4 body diagonals\n\n\n\n\n\n\n\n\n\n\nRotation Type\nNumber of Axes\nAngle\nPermutation Form (on the 4 body diagonals)\nCount\n\n\n\n\nIdentity\n-\n\\(0^\\circ\\)\n\\((a)(b)(c)(d)\\)\n1\n\n\nFace axis\n3\n\\(90^\\circ\\)\n\\((a\\,b\\,c\\,d)\\)\n3\n\n\nFace axis\n3\n\\(180^\\circ\\)\n\\((a\\,b)(c\\,d)\\)\n3\n\n\nFace axis\n3\n\\(270^\\circ\\)\n\\((a\\,b\\,c\\,d)\\)\n3\n\n\nVertex axis\n4\n\\(120^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nVertex axis\n4\n\\(240^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nEdge axis\n6\n\\(180^\\circ\\)\n\\((a)(b)(c\\,d)\\)\n6\n\n\n\nTotal count = 24 = \\(|S_4|\\)\nThus, $ Rot(Cube) S_4 $"
+  },
+  {
+    "objectID": "index.html#octahedron-1",
+    "href": "index.html#octahedron-1",
+    "title": "Platonic Solids",
+    "section": "9.3 Octahedron",
+    "text": "9.3 Octahedron\nPermutation on 4 pairs of opposite faces\n\n\n\n\n\n\n\n\n\n\nRotation Type\nNumber of Axes\nAngle\nPermutation Form (on the 4 pairs of opposite faces)\nCount\n\n\n\n\nIdentity\n-\n\\(0^\\circ\\)\n\\((a)(b)(c)(d)\\)\n1\n\n\nVertex axis\n3\n\\(90^\\circ\\)\n\\((a\\,b\\,c\\,d)\\)\n3\n\n\nVertex axis\n3\n\\(180^\\circ\\)\n\\((a\\,b)(c\\,d)\\)\n3\n\n\nVertex axis\n3\n\\(270^\\circ\\)\n\\((a\\,b\\,c\\,d)\\)\n3\n\n\nFace axis\n4\n\\(120^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nFace axis\n4\n\\(240^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n4\n\n\nEdge axis\n6\n\\(180^\\circ\\)\n\\((a)(b)(c\\,d)\\)\n6\n\n\n\nTotal count = 24 = \\(|S_4|\\)\nThus, $ Rot(Octahedron) S_4 $"
+  },
+  {
+    "objectID": "index.html#dodecahedron-1",
+    "href": "index.html#dodecahedron-1",
+    "title": "Platonic Solids",
+    "section": "9.4 Dodecahedron",
+    "text": "9.4 Dodecahedron\nPermutation on 5 inscribed cubes\n\n\n\n\n\n\n\n\n\n\nRotation Type\nNumber of Axes\nAngle\nPermutation Form (on the 5 inscribed cubes)\nCount\n\n\n\n\nIdentity\n-\n\\(0^\\circ\\)\n\\((a)(b)(c)(d)(e)\\)\n1\n\n\nFace axis\n6\n\\(72^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nFace axis\n6\n\\(144^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nFace axis\n6\n\\(216^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nFace axis\n6\n\\(288^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nVertex axis\n10\n\\(120^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n10\n\n\nVertex axis\n10\n\\(240^\\circ\\)\n\\((a)(b\\,d\\,c)\\)\n10\n\n\nEdge axis\n15\n\\(180^\\circ\\)\n\\((a\\,b)(c\\,d)(e)\\)\n15\n\n\n\nTotal count = 60 = \\(|A_5|\\)\nThus, $ Rot(Dodecahedron) A_5 $"
+  },
+  {
+    "objectID": "index.html#icosahedron-1",
+    "href": "index.html#icosahedron-1",
+    "title": "Platonic Solids",
+    "section": "9.5 Icosahedron",
+    "text": "9.5 Icosahedron\nPermutation on 5 inscribed cubes\n\n\n\n\n\n\n\n\n\n\nRotation Type\nNumber of Axes\nAngle\nPermutation Form (on the 5 inscribed cubes)\nCount\n\n\n\n\nIdentity\n-\n\\(0^\\circ\\)\n\\((a)(b)(c)(d)(e)\\)\n1\n\n\nVertex axis\n6\n\\(72^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nVertex axis\n6\n\\(144^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nVertex axis\n6\n\\(216^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nVertex axis\n6\n\\(288^\\circ\\)\n\\((a\\,b\\,c\\,d\\,e)\\)\n6\n\n\nFace axis\n10\n\\(120^\\circ\\)\n\\((a)(b\\,c\\,d)\\)\n10\n\n\nFace axis\n10\n\\(240^\\circ\\)\n\\((a)(b\\,d\\,c)\\)\n10\n\n\nEdge axis\n15\n\\(180^\\circ\\)\n\\((a\\,b)(c\\,d)(e)\\)\n15\n\n\n\nTotal count = 60 = \\(|A_5|\\)\nThus, $ Rot(Icosahedron) A_5 $"
   }
 ]
