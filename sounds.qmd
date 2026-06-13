@@ -23,78 +23,693 @@ project:
   type: website
 ---
 
-# Types of Graph Sonification Using Spectral Methods
-
-In spectral graph sonification, different components of the eigen-decomposition (eigenvalues, eigenvectors, and eigenspaces) encode different aspects of structure. Each carries a distinct type of information and produces a different auditory experience.
+In spectral graph sonification, different components of the spectral decomposition encode different aspects of graph structure. In this work, eigenvalues and eigenspaces are used to generate distinct auditory representations of the graph.
 
 ## Eigenvalue-Based Sonification
 
-Eigenvalues of graph matrices (such as the Laplacian or Adjacency matrix) are mapped to sound parameters such as pitch or frequency. Each eigenvalue corresponds to a structural mode of the graph.
+Eigenvalues of the Laplacian matrix of the graph are mapped to audible frequencies. Each eigenvalue represents a spectral mode of the graph, and the distribution of eigenvalues determines the overall spectral character of the resulting sound.
 
-Small eigenvalues correspond to low-frequency, smooth, or global structures, while large eigenvalues correspond to high-frequency, localized, or rapidly varying structures. The distribution of eigenvalues can be heard as the overall spectral shape of the graph.
+### Generation of the Eigenvalue Sonification
 
-## Eigenvector-Based Sonification
+Given a graph $G$, its adjacency matrix $A$ is used to construct the graph Laplacian
 
-Eigenvectors describe how each node participates in a given eigenmode. In sonification, eigenvector components are mapped to amplitude, timbre, or spatial position.
+$$ L = D - A $$
 
-This reveals how structure is distributed across the graph. Nodes with similar values behave similarly in sound, while sign changes can produce phase inversion or stereo separation. Eigenvectors highlight spatial patterns, clustering, and symmetry.
+where $D$ is the degree matrix. The eigenvalues of $L$ are then computed:
 
-In the eigenvalue sonification, each distinct Laplacian eigenvalue is assigned a pitch. Larger eigenvalues correspond to higher pitches, while smaller eigenvalues correspond to lower pitches. Eigenvalue multiplicities are represented through additional texture or beating effects.
+$$ 0 = \lambda_1 \leq \lambda_2 \leq \cdots \leq \lambda_n $$
 
-The following properties can be perceived:
+Distinct eigenvalues are mapped to audible frequencies. Larger eigenvalues are assigned higher pitches, while smaller eigenvalues are assigned lower pitches.
 
-- Number of pitch regions: number of distinct eigenvalues.
-- Pitch range: spread of the spectrum.
-- Gaps between notes: spectral gaps between eigenvalues.
-- Wobble or beating: eigenvalue multiplicity.
+To represent eigenvalue multiplicity, multiple slightly detuned copies of the corresponding frequency are generated. The interference between these nearby frequencies produces an audible beating effect. Consequently:
 
-Since large multiplicities often arise from graph symmetries, highly symmetric graphs such as the Platonic solids tend to exhibit stronger and more prominent textures than graphs with little symmetry.
+- pitch represents the eigenvalue,
+- beating or wobbling represents the multiplicity of the eigenvalue.
 
-### Platonics
+Since high multiplicities often arise from graph symmetries, strongly symmetric graphs typically produce more pronounced beating effects.
+
+All generated tones are summed and normalized to produce the final audio signal, which is exported as a WAV file.
+
+### Platonic Solids
 
 - Tetrahedron
 
 <audio controls>
-  <source src="sounds/tetrahedron_eigenvalues.mp3" type="audio/mpeg">
+
+<source src="sounds/tetrahedron_eigenvalues.mp3" type="audio/mpeg">
+
 </audio>
 
 - Cube
 
 <audio controls>
-  <source src="sounds/cube_eigenvalues.mp3" type="audio/mpeg">
+
+<source src="sounds/cube_eigenvalues.mp3" type="audio/mpeg">
+
 </audio>
 
 - Octahedron
 
 <audio controls>
-  <source src="sounds/octahedron_eigenvalues.mp3" type="audio/mpeg">
+
+<source src="sounds/octahedron_eigenvalues.mp3" type="audio/mpeg">
+
 </audio>
 
 - Dodecahedron
 
 <audio controls>
-  <source src="sounds/dodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+<source src="sounds/dodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
 </audio>
 
 - Icosahedron
 
 <audio controls>
-  <source src="sounds/icosahedron_eigenvalues.mp3" type="audio/mpeg">
+
+<source src="sounds/icosahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+### Archimedean Solids
+
+- Truncated Tetrahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Tetrahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Cube
+
+<audio controls>
+
+<source src="sounds/Truncated Cube_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Octahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Octahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Dodecahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Dodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Icosahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Icosahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Cuboctahedron
+
+<audio controls>
+
+<source src="sounds/Cuboctahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Icosidodecahedron
+
+<audio controls>
+
+<source src="sounds/Icosidodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Rhombicuboctahedron
+
+<audio controls>
+
+<source src="sounds/Rhombicuboctahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Rhombicosidodecahedron
+
+<audio controls>
+
+<source src="sounds/Rhombicosidodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Great rhombicuboctahedron
+
+<audio controls>
+
+<source src="sounds/Great rhombicuboctahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Great rhombicosadodecahedron
+
+<audio controls>
+
+<source src="sounds/Great rhombicosadodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Snub cube
+
+<audio controls>
+
+<source src="sounds/Snub cube_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Snub dodecahedron
+
+<audio controls>
+
+<source src="sounds/Snub dodecahedron_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+### Other graphs
+
+- Random tree with 20 vertices
+
+<audio controls>
+
+<source src="sounds/random_tree_1_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Star graph with 10 vertices
+
+<audio controls>
+
+<source src="sounds/star_tree_1_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Path on 5 vertices
+
+<audio controls>
+
+<source src="sounds/path_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Cycle $C_5$
+
+<audio controls>
+
+<source src="sounds/cycle_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Complete graph $K_7$
+
+<audio controls>
+
+<source src="sounds/complete_eigenvalues.mp3" type="audio/mpeg">
+
+</audio>
+
+- Complete Bipartite graph $K_{3,5}$
+
+<audio controls>
+
+<source src="sounds/bipartite_eigenvalues.mp3" type="audio/mpeg">
+
 </audio>
 
 ## Eigenspace-Based Sonification
 
-When eigenvalues have multiplicity greater than one, they form eigenspaces. Instead of using a single eigenvector, the entire subspace is used to generate sound.
-
-This produces richer sound textures. Each eigenspace acts as a single sound object with internal degrees of freedom. Rotations within the space or combinations of basis vectors create evolving timbres. Degenerate eigenvalues lead to more complex and layered sound structures.
-
 In the eigenspace sonification, each eigenspace is represented by a pitch associated with its eigenvalue. The dimension of the eigenspace (equivalently, the multiplicity of the corresponding eigenvalue) is encoded through the richness of the sound.
 
-The following properties can be perceived:
+Unlike the eigenvalue sonification, which emphasizes the spectrum itself, the eigenspace sonification emphasizes the dimensions of the corresponding eigenspaces.
 
-- Number of notes: number of eigenspaces (distinct eigenvalues).
-- Pitch: spectral position of the eigenspace.
-- Timbre or richness: dimension of the eigenspace.
-- Distribution of rich and simple tones: distribution of eigenspace dimensions across the spectrum.
+### Generation of the Eigenspace Sonification
 
-This sonification emphasizes how the graph decomposes into eigenspaces rather than focusing solely on the spectrum.
+The graph Laplacian
+
+$$ L = D - A $$
+
+is constructed and its spectral decomposition is computed. For each distinct eigenvalue $\lambda$, the corresponding eigenspace
+
+$$ E_\lambda = \{ v \in \mathbb{R}^n : Lv = \lambda v \} $$
+
+is identified.
+
+Each eigenspace is assigned a base frequency determined by its eigenvalue. The dimension of the eigenspace, equal to the multiplicity of the eigenvalue, is encoded through harmonic enrichment.
+
+For an eigenspace of dimension $m$, the generated sound consists of the fundamental frequency together with its first $m$ harmonics:
+
+$$ \sin(2\pi ft) + \frac12\sin(2\pi 2ft) + \cdots + \frac1m\sin(2\pi mft) $$
+
+Thus:
+
+- pitch represents the eigenvalue associated with the eigenspace,
+- timbre or harmonic richness represents the dimension of the eigenspace.
+
+The sounds corresponding to all eigenspaces are combined and normalized to obtain the final audio signal, which is exported as a WAV file.
+
+### Platonic Solids
+
+- Tetrahedron
+
+<audio controls>
+
+<source src="sounds/tetrahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Cube
+
+<audio controls>
+
+<source src="sounds/cube_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Octahedron
+
+<audio controls>
+
+<source src="sounds/octahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Dodecahedron
+
+<audio controls>
+
+<source src="sounds/dodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Icosahedron
+
+<audio controls>
+
+<source src="sounds/icosahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+### Archimedean Solids
+
+- Truncated Tetrahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Tetrahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Cube
+
+<audio controls>
+
+<source src="sounds/Truncated Cube_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Octahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Octahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Dodecahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Dodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Truncated Icosahedron
+
+<audio controls>
+
+<source src="sounds/Truncated Icosahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Cuboctahedron
+
+<audio controls>
+
+<source src="sounds/Cuboctahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Icosidodecahedron
+
+<audio controls>
+
+<source src="sounds/Icosidodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Rhombicuboctahedron
+
+<audio controls>
+
+<source src="sounds/Rhombicuboctahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Rhombicosidodecahedron
+
+<audio controls>
+
+<source src="sounds/Rhombicosidodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Great rhombicuboctahedron
+
+<audio controls>
+
+<source src="sounds/Great rhombicuboctahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Great rhombicosadodecahedron
+
+<audio controls>
+
+<source src="sounds/Great rhombicosadodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Snub cube
+
+<audio controls>
+
+<source src="sounds/Snub cube_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Snub dodecahedron
+
+<audio controls>
+
+<source src="sounds/Snub dodecahedron_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+### Other graphs
+
+- Random tree with 20 vertices
+
+<audio controls>
+
+<source src="sounds/random_tree_1_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Star graph with 10 vertices
+
+<audio controls>
+
+<source src="sounds/star_tree_1_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Path on 5 vertices
+
+<audio controls>
+
+<source src="sounds/path_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Cycle $C_5$
+
+<audio controls>
+
+<source src="sounds/cycle_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Complete graph $K_7$
+
+<audio controls>
+
+<source src="sounds/complete_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+- Complete Bipartite graph $K_{3,5}$
+
+<audio controls>
+
+<source src="sounds/bipartite_eigenspaces.mp3" type="audio/mpeg">
+
+</audio>
+
+## General code used to generate audio
+
+```{python}
+#| echo: true
+
+import numpy as np
+from scipy.linalg import eigh
+from scipy.io.wavfile import write
+
+
+class SpectralSonifier:
+    """
+    Spectral graph sonification based on Laplacian eigenvalues
+    and eigenspace multiplicities.
+    """
+
+    def __init__(self, A, name="graph", sr=44100):
+
+        self.A = np.array(A, dtype=float)
+        self.name = name
+        self.sr = sr
+
+        # Laplacian
+        D = np.diag(np.sum(self.A, axis=1))
+        self.L = D - self.A
+
+        # Spectral decomposition
+        self.evals, self.evecs = eigh(self.L)
+
+    # --------------------------------------------------
+    # Utility
+    # --------------------------------------------------
+
+    def save_wav(self, signal, filename):
+
+        signal = signal / (np.max(np.abs(signal)) + 1e-12)
+
+        audio = (32767 * signal).astype(np.int16)
+
+        write(filename, self.sr, audio)
+
+        print(f"Saved: {filename}")
+
+    # --------------------------------------------------
+    # Group equal eigenvalues
+    # --------------------------------------------------
+
+    def spectral_blocks(self, tol=1e-6):
+
+        blocks = []
+
+        i = 0
+        n = len(self.evals)
+
+        while i < n:
+
+            lam = self.evals[i]
+
+            j = i + 1
+
+            while j < n and abs(self.evals[j] - lam) < tol:
+                j += 1
+
+            multiplicity = j - i
+
+            blocks.append((lam, multiplicity))
+
+            i = j
+
+        return blocks
+
+    # --------------------------------------------------
+    # Print spectrum
+    # --------------------------------------------------
+
+    def print_spectrum(self):
+
+        print("\nSpectrum:\n")
+
+        for lam, mult in self.spectral_blocks():
+            print(f"λ = {lam:.4f}, multiplicity = {mult}")
+
+    # --------------------------------------------------
+    # 1. Eigenvalue sonification
+    # --------------------------------------------------
+
+    def eigenvalue_sonify(self,
+                          duration=5,
+                          base_freq=220):
+
+        t = np.linspace(
+            0,
+            duration,
+            int(self.sr * duration),
+            endpoint=False
+        )
+
+        signal = np.zeros_like(t)
+
+        blocks = self.spectral_blocks()
+
+        max_lambda = max(lam for lam, _ in blocks)
+
+        for lam, mult in blocks:
+
+            freq = base_freq * 2 ** (
+                lam / (max_lambda + 1e-9)
+            )
+
+            # multiplicity -> chord size
+            for k in range(mult):
+
+                detune = 1 + 0.01 * (
+                    k - (mult - 1) / 2
+                )
+
+                signal += (
+                    1 / mult
+                ) * np.sin(
+                    2 * np.pi * freq * detune * t
+                )
+
+        self.save_wav(
+            signal,
+            f"{self.name}_eigenvalues.wav"
+        )
+
+    # --------------------------------------------------
+    # 2. Eigenspace sonification
+    # --------------------------------------------------
+
+    def eigenspace_sonify(self,
+                          duration=5,
+                          base_freq=220):
+
+        t = np.linspace(
+            0,
+            duration,
+            int(self.sr * duration),
+            endpoint=False
+        )
+
+        signal = np.zeros_like(t)
+
+        blocks = self.spectral_blocks()
+
+        max_lambda = max(lam for lam, _ in blocks)
+
+        for lam, mult in blocks:
+
+            freq = base_freq * 2 ** (
+                lam / (max_lambda + 1e-9)
+            )
+
+            # multiplicity controls richness
+            for h in range(1, mult + 1):
+
+                signal += (
+                    1 / h
+                ) * np.sin(
+                    2 * np.pi * h * freq * t
+                )
+
+        self.save_wav(
+            signal,
+            f"{self.name}_eigenspaces.wav"
+        )
+
+    # --------------------------------------------------
+    # 3. Combined sonification
+    # --------------------------------------------------
+
+    def combined_sonify(self,
+                        duration=6,
+                        base_freq=220):
+
+        t = np.linspace(
+            0,
+            duration,
+            int(self.sr * duration),
+            endpoint=False
+        )
+
+        signal = np.zeros_like(t)
+
+        blocks = self.spectral_blocks()
+
+        max_lambda = max(lam for lam, _ in blocks)
+
+        for lam, mult in blocks:
+
+            freq = base_freq * 2 ** (
+                lam / (max_lambda + 1e-9)
+            )
+
+            # main spectral tone
+            signal += np.sin(
+                2 * np.pi * freq * t
+            )
+
+            # multiplicity texture
+            for h in range(2, mult + 2):
+
+                signal += (
+                    0.5 / h
+                ) * np.sin(
+                    2 * np.pi * h * freq * t
+                )
+
+        self.save_wav(
+            signal,
+            f"{self.name}_combined.wav"
+        )
+
+    # --------------------------------------------------
+    # Generate everything
+    # --------------------------------------------------
+
+    def generate_all(self):
+
+        self.print_spectrum()
+
+        self.eigenvalue_sonify()
+
+        self.eigenspace_sonify()
+
+        self.combined_sonify()
+
+        print(
+            f"\nFinished generating audio for {self.name}"
+        )
+```
+
+The code also generates an extra combined.wav file. The combined sonification is obtained by superposing the sounds associated with all eigenspaces. The resulting audio provides a global auditory representation of the spectral decomposition, simultaneously reflecting the distribution of eigenvalues and the dimensions of the corresponding eigenspaces.
+
+For simplicity purpose, the combined versions are not included.
