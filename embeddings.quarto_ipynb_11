@@ -1,0 +1,669 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Spectral Embedding of Platonic Solids\"\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-depth: 3\n",
+        "    number-sections: true\n",
+        "    theme: minty\n",
+        "    code-fold: false\n",
+        "    smooth-scroll: true\n",
+        "    embed-resources: true\n",
+        "  pdf:\n",
+        "    documentclass: article\n",
+        "execute:\n",
+        "  echo: false\n",
+        "  warning: false\n",
+        "  message: false\n",
+        "editor: visual\n",
+        "jupyter: python3\n",
+        "project: \n",
+        "  type: website\n",
+        "---\n",
+        "\n",
+        "In this page, we have not embedded for $\\lambda_{max}$ which has multiplicity 1 for every solid. Such plots give us a single point. We are unable to add them because the file is unable to render too many interactive plots."
+      ],
+      "id": "6e4beab2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "import numpy as np\n",
+        "import plotly.graph_objects as go\n",
+        "\n",
+        "def embed(A, eigenvalue):\n",
+        "\n",
+        "    # Eigenvalues and eigenvectors\n",
+        "    eigvals, eigvecs = np.linalg.eigh(A)\n",
+        "\n",
+        "    #print(\"Eigenvalues:\")\n",
+        "    #print(np.round(eigvals, 4))\n",
+        "\n",
+        "    # select eigenspace\n",
+        "    idx = np.argmin(np.abs(eigvals - eigenvalue)) \n",
+        "    eigenvalue = eigvals[idx] \n",
+        "    coords = eigvecs[:, np.isclose(eigvals, eigenvalue)]\n",
+        "\n",
+        "    print(f\"\\nEigenvectors for λ = {eigenvalue}:\")\n",
+        "    for i, vec in enumerate(coords.T):\n",
+        "        print(f\"\\nEigenvector {i+1}:\")\n",
+        "        print(np.round(vec, 4))\n",
+        "\n",
+        "    # -------------------------\n",
+        "    # PCA if dimension > 3\n",
+        "    # -------------------------\n",
+        "    if coords.shape[1] > 3:\n",
+        "        print(\"\\nApplying PCA (dim > 3 → reducing to 3D)\")\n",
+        "\n",
+        "        X = coords\n",
+        "\n",
+        "        # center\n",
+        "        X = X - np.mean(X, axis=0)\n",
+        "\n",
+        "        # covariance\n",
+        "        C = X.T @ X\n",
+        "\n",
+        "        # eigen-decomposition of covariance (PCA)\n",
+        "        pca_vals, pca_vecs = np.linalg.eigh(C)\n",
+        "\n",
+        "        # sort descending\n",
+        "        idx = np.argsort(pca_vals)[::-1]\n",
+        "        pca_vecs = pca_vecs[:, idx]\n",
+        "\n",
+        "        # project to top 3 components\n",
+        "        coords = X @ pca_vecs[:, :3]\n",
+        "\n",
+        "    else:\n",
+        "    # if dim < 3, pad with zeros\n",
+        "        coords = coords[:, :coords.shape[1]]\n",
+        "\n",
+        "        if coords.shape[1] == 1:\n",
+        "            coords = np.hstack([coords, np.zeros((coords.shape[0], 2))])\n",
+        "        elif coords.shape[1] == 2:\n",
+        "            coords = np.hstack([coords, np.zeros((coords.shape[0], 1))])\n",
+        "        elif coords.shape[1] == 3:\n",
+        "            coords = coords\n",
+        "\n",
+        "    # -------------------------\n",
+        "    # edges\n",
+        "    # -------------------------\n",
+        "    edges = np.argwhere(np.triu(A) == 1)\n",
+        "\n",
+        "    edge_x, edge_y, edge_z = [], [], []\n",
+        "\n",
+        "    for i, j in edges:\n",
+        "        edge_x += [coords[i,0], coords[j,0], None]\n",
+        "        edge_y += [coords[i,1], coords[j,1], None]\n",
+        "        edge_z += [coords[i,2], coords[j,2], None]\n",
+        "\n",
+        "    # -------------------------\n",
+        "    # plot\n",
+        "    # -------------------------\n",
+        "    fig = go.Figure()\n",
+        "\n",
+        "    fig.add_trace(go.Scatter3d(\n",
+        "        x=edge_x,\n",
+        "        y=edge_y,\n",
+        "        z=edge_z,\n",
+        "        mode='lines'\n",
+        "    ))\n",
+        "\n",
+        "    fig.add_trace(go.Scatter3d(\n",
+        "        x=coords[:,0],\n",
+        "        y=coords[:,1],\n",
+        "        z=coords[:,2],\n",
+        "        mode='markers+text',\n",
+        "        text=[str(i+1) for i in range(len(coords))]\n",
+        "    ))\n",
+        "    print(\"Co-ordinates: \\n\", coords)\n",
+        "\n",
+        "    return fig"
+      ],
+      "id": "c2afd1d8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Tetrahedron"
+      ],
+      "id": "4f7fe2d5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "T = np.array([\n",
+        "    [0,1,1,1],\n",
+        "    [1,0,1,1],\n",
+        "    [1,1,0,1],\n",
+        "    [1,1,1,0]\n",
+        "])\n",
+        "\n",
+        "eigvals, eigvecs = np.linalg.eigh(T)\n",
+        "print(\"Eigenvalues:\")\n",
+        "print(np.round(eigvals, 4))"
+      ],
+      "id": "ba62daa0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -1"
+      ],
+      "id": "fc5f00bf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(T, eigenvalue=-1)"
+      ],
+      "id": "2cae8059",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Cube"
+      ],
+      "id": "befcf7aa"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "C = np.array([\n",
+        "    [0,1,0,1,1,0,0,0],\n",
+        "    [1,0,1,0,0,1,0,0],\n",
+        "    [0,1,0,1,0,0,1,0],\n",
+        "    [1,0,1,0,0,0,0,1],\n",
+        "    [1,0,0,0,0,1,0,1],\n",
+        "    [0,1,0,0,1,0,1,0],\n",
+        "    [0,0,1,0,0,1,0,1],\n",
+        "    [0,0,0,1,1,0,1,0]\n",
+        "])\n",
+        "\n",
+        "eigvals, eigvecs = np.linalg.eigh(C)\n",
+        "print(\"Eigenvalues:\")\n",
+        "print(np.round(eigvals, 4))"
+      ],
+      "id": "ed09d7b6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -3 "
+      ],
+      "id": "fcb89122"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(C, eigenvalue = -3)"
+      ],
+      "id": "3f0e82ad",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -1 "
+      ],
+      "id": "d117c01c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(C, eigenvalue = -1)"
+      ],
+      "id": "4554e046",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = 1 "
+      ],
+      "id": "14e21186"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(C, eigenvalue = 1)"
+      ],
+      "id": "e3eff5ab",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Octahedron"
+      ],
+      "id": "b7ed94e6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "O = np.array([\n",
+        "    [0,1,1,1,1,0],\n",
+        "    [1,0,1,0,1,1],\n",
+        "    [1,1,0,1,0,1],\n",
+        "    [1,0,1,0,1,1],\n",
+        "    [1,1,0,1,0,1],\n",
+        "    [0,1,1,1,1,0]\n",
+        "])\n",
+        "\n",
+        "eigvals, eigvecs = np.linalg.eigh(O)\n",
+        "print(\"Eigenvalues:\")\n",
+        "print(np.round(eigvals, 4))"
+      ],
+      "id": "3cf27ae1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -2 "
+      ],
+      "id": "eb2fe637"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(O, eigenvalue = -2)"
+      ],
+      "id": "e5dd1620",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = 0 "
+      ],
+      "id": "79f5c41e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(O, eigenvalue = 0)"
+      ],
+      "id": "68b74b01",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Dodecahedron"
+      ],
+      "id": "941e9193"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "D = np.array([\n",
+        "    [0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\n",
+        "    [1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0],\n",
+        "    [0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0],\n",
+        "    [0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0],\n",
+        "    [1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],\n",
+        "    [1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0],\n",
+        "    [0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0],\n",
+        "    [0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],\n",
+        "    [0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,1,0,0],\n",
+        "    [0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0],\n",
+        "    [0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0],\n",
+        "    [0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0],\n",
+        "    [0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1],\n",
+        "    [0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0],\n",
+        "    [0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0],\n",
+        "    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1],\n",
+        "    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0],\n",
+        "    [0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0],\n",
+        "    [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,1],\n",
+        "    [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0]\n",
+        "])\n",
+        "\n",
+        "eigvals, eigvecs = np.linalg.eigh(D)\n",
+        "print(\"Eigenvalues:\")\n",
+        "print(np.round(eigvals, 4))"
+      ],
+      "id": "20521daa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -√5"
+      ],
+      "id": "e0cf6245"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(D, eigenvalue = -2.2361)"
+      ],
+      "id": "8d079139",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -2"
+      ],
+      "id": "61783345"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(D, eigenvalue = -2)"
+      ],
+      "id": "7e6b764c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = 0 "
+      ],
+      "id": "da40f088"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(D, eigenvalue = 0)"
+      ],
+      "id": "2bb7621b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = 1"
+      ],
+      "id": "2f896c3d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(D, eigenvalue = 1)"
+      ],
+      "id": "76e3f0a4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = √5"
+      ],
+      "id": "fb4b3362"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(D, eigenvalue = 2.2361)"
+      ],
+      "id": "07637bb6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Icosahedron"
+      ],
+      "id": "b0c72de2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "I = np.array([\n",
+        "    [0,1,1,1,1,0,0,0,1,0,0,0],\n",
+        "    [1,0,1,0,1,1,1,0,0,0,0,0],\n",
+        "    [1,1,0,0,0,0,1,1,1,0,0,0],\n",
+        "    [1,0,0,0,1,0,0,0,1,1,1,0],\n",
+        "    [1,1,0,1,0,1,0,0,0,0,1,0],\n",
+        "    [0,1,0,0,1,0,1,0,0,0,1,1],\n",
+        "    [0,1,1,0,0,1,0,1,0,0,0,1],\n",
+        "    [0,0,1,0,0,0,1,0,1,1,0,1],\n",
+        "    [1,0,1,1,0,0,0,1,0,1,0,0],\n",
+        "    [0,0,0,1,0,0,0,1,1,0,1,1],\n",
+        "    [0,0,0,1,1,1,0,0,0,1,0,1],\n",
+        "    [0,0,0,0,0,1,1,1,0,1,1,0]\n",
+        "])\n",
+        "\n",
+        "eigvals, eigvecs = np.linalg.eigh(I)\n",
+        "print(\"Eigenvalues:\")\n",
+        "print(np.round(eigvals, 4))"
+      ],
+      "id": "e3a3bd45",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -√5 "
+      ],
+      "id": "36a66dcf"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(I, eigenvalue = -2.2361)"
+      ],
+      "id": "01828d14",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = -1 "
+      ],
+      "id": "243cc762"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(I, eigenvalue = -1)"
+      ],
+      "id": "6d0b77e3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## λ = √5 "
+      ],
+      "id": "d589c460"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "message": false
+      },
+      "source": [
+        "#| echo: false\n",
+        "#| warning: false\n",
+        "\n",
+        "embed(I, eigenvalue = 2.2361)"
+      ],
+      "id": "a7b519c6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Back to the original page: [Platonic Solids](index.qmd)"
+      ],
+      "id": "1c2cba82"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python314\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

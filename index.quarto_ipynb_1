@@ -260,7 +260,7 @@
         "\n",
         "## Tetrahedron"
       ],
-      "id": "7d2b615a"
+      "id": "b70dd8ac"
     },
     {
       "cell_type": "code",
@@ -509,7 +509,7 @@
         "\n",
         "fig"
       ],
-      "id": "f5425aa1",
+      "id": "d6af715f",
       "execution_count": null,
       "outputs": []
     },
@@ -538,7 +538,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "889ac8a2"
+      "id": "5bf7d286"
     },
     {
       "cell_type": "code",
@@ -591,7 +591,7 @@
         "    r\"\\sigma(Q)=\\{(2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "643ab5b3",
+      "id": "071aa63b",
       "execution_count": null,
       "outputs": []
     },
@@ -633,7 +633,7 @@
         "\n",
         "## Cube"
       ],
-      "id": "32f93c56"
+      "id": "e61d75ac"
     },
     {
       "cell_type": "code",
@@ -886,7 +886,7 @@
         "\n",
         "fig"
       ],
-      "id": "b2f7288e",
+      "id": "1890a060",
       "execution_count": null,
       "outputs": []
     },
@@ -916,7 +916,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "56b44710"
+      "id": "24d43836"
     },
     {
       "cell_type": "code",
@@ -978,7 +978,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt6)^1, (2)^3, (\\sqrt2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "fc1bb6a2",
+      "id": "498fad26",
       "execution_count": null,
       "outputs": []
     },
@@ -1016,7 +1016,7 @@
         "\n",
         "## Octahedron"
       ],
-      "id": "31efa473"
+      "id": "28684337"
     },
     {
       "cell_type": "code",
@@ -1269,7 +1269,7 @@
         "\n",
         "fig"
       ],
-      "id": "8f534596",
+      "id": "cc3aa81d",
       "execution_count": null,
       "outputs": []
     },
@@ -1298,7 +1298,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "240e8e70"
+      "id": "c6cd0bd5"
     },
     {
       "cell_type": "code",
@@ -1358,7 +1358,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt6)^2, (2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "2319fe3d",
+      "id": "984d5a88",
       "execution_count": null,
       "outputs": []
     },
@@ -1396,7 +1396,7 @@
         "\n",
         "## Dodecahedron"
       ],
-      "id": "a9322daf"
+      "id": "1509b380"
     },
     {
       "cell_type": "code",
@@ -1695,7 +1695,7 @@
         "\n",
         "fig"
       ],
-      "id": "e3874c52",
+      "id": "ec34a0e9",
       "execution_count": null,
       "outputs": []
     },
@@ -1726,7 +1726,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "5a028695"
+      "id": "eb4e7770"
     },
     {
       "cell_type": "code",
@@ -1800,7 +1800,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt{3+\\sqrt5})^3, (\\sqrt5)^4, (\\sqrt3)^4, (\\sqrt2)^5, (\\sqrt{3-\\sqrt5})^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "d5023fe5",
+      "id": "5c61c2ae",
       "execution_count": null,
       "outputs": []
     },
@@ -1838,7 +1838,7 @@
         "\n",
         "## Icosahedron"
       ],
-      "id": "5e9c5007"
+      "id": "5058b0f1"
     },
     {
       "cell_type": "code",
@@ -2106,7 +2106,7 @@
         "\n",
         "fig"
       ],
-      "id": "8ccf276a",
+      "id": "8cfe8be5",
       "execution_count": null,
       "outputs": []
     },
@@ -2137,7 +2137,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "05fc3e4a"
+      "id": "c9eca3d6"
     },
     {
       "cell_type": "code",
@@ -2203,7 +2203,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt{5+\\sqrt5})^3, (\\sqrt6)^5, (\\sqrt{5-\\sqrt5})^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "1621f342",
+      "id": "478747e3",
       "execution_count": null,
       "outputs": []
     },
@@ -2553,7 +2553,7 @@
         "\n",
         "$$ Rot(Icosahedron) \\cong A_5 $$"
       ],
-      "id": "3685c4ee"
+      "id": "cdde366c"
     }
   ],
   "metadata": {

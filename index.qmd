@@ -2416,3 +2416,15 @@ Permutation on 5 inscribed cubes
 Total count = 60 = $|A_5|$
 
 $$ Rot(Icosahedron) \cong A_5 $$
+
+# Hearing the Platonic Solids [Graph Sonification]
+
+Graph sonification is the process of mapping structural properties of a graph into sound. Instead of visualizing nodes and edges, we encode features such as connectivity, distances, or spectral information into auditory parameters like pitch, rhythm, and timbre. This allows graphs to be studied through hearing rather than only through visual representation. 
+
+Different aspects of a graph can be sonified in different ways. Adjacency relations can generate rhythmic patterns, shortest path distances can be mapped to pitch intervals, and node degrees can control amplitude or intensity. Spectral properties, such as eigenvalues and eigenvectors of graph matrices, provide a higher-level representation of structure and can be mapped to frequencies and sound textures.
+
+Graph sonification is useful for exploring structure in complex or highly symmetric graphs, where visual interpretation may be difficult. It can reveal patterns such as clustering, symmetry, and global organization through repeated or harmonic sound structures. In spectral approaches, degeneracies in eigenvalues correspond to richer sound textures, while eigenvectors describe how these structures are distributed across the graph.
+
+The following page explores graph sonification in platonic solids:
+[Graph Sonification](sounds.qmd)
+

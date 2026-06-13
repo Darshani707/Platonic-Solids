@@ -1,9 +1,27 @@
 ---
 title: "Spectral Embedding of Platonic Solids"
-format: html
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: minty
+    code-fold: false
+    smooth-scroll: true
+    embed-resources: true
+  pdf:
+    documentclass: article
+execute:
+  echo: false
+  warning: false
+  message: false
 editor: visual
 jupyter: python3
+project: 
+  type: website
 ---
+
+In this page, we have not embedded for $\lambda_{max}$ which has multiplicity 1 for every solid. Such plots give us a single point. We are unable to add them because the file is unable to render too many interactive plots.
 
 ```{python}
 #| echo: false
@@ -22,9 +40,8 @@ def embed(A, eigenvalue):
     #print(np.round(eigvals, 4))
 
     # select eigenspace
-    idx = np.argmin(np.abs(eigvals - eigenvalue))
-    eigenvalue = eigvals[idx]
-
+    idx = np.argmin(np.abs(eigvals - eigenvalue)) 
+    eigenvalue = eigvals[idx] 
     coords = eigvecs[:, np.isclose(eigvals, eigenvalue)]
 
     print(f"\nEigenvectors for λ = {eigenvalue}:")
@@ -98,11 +115,12 @@ def embed(A, eigenvalue):
         mode='markers+text',
         text=[str(i+1) for i in range(len(coords))]
     ))
+    print("Co-ordinates: \n", coords)
 
-    fig.show()
+    return fig
 ```
 
-## Tetrahedron
+# Tetrahedron
 
 ```{python}
 #| echo: false
@@ -121,23 +139,17 @@ print("Eigenvalues:")
 print(np.round(eigvals, 4))
 ```
 
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-embed(T, eigenvalue = -1)
-```
+## λ = -1
 
 ```{python}
 #| echo: false
 #| warning: false
 #| message: false
 
-embed(T, eigenvalue = 3)
+embed(T, eigenvalue=-1)
 ```
 
-## Cube
+# Cube
 
 ```{python}
 #| echo: false
@@ -160,6 +172,8 @@ print("Eigenvalues:")
 print(np.round(eigvals, 4))
 ```
 
+## λ = -3 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -167,6 +181,8 @@ print(np.round(eigvals, 4))
 
 embed(C, eigenvalue = -3)
 ```
+
+## λ = -1 
 
 ```{python}
 #| echo: false
@@ -176,6 +192,8 @@ embed(C, eigenvalue = -3)
 embed(C, eigenvalue = -1)
 ```
 
+## λ = 1 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -184,15 +202,7 @@ embed(C, eigenvalue = -1)
 embed(C, eigenvalue = 1)
 ```
 
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-embed(C, eigenvalue = 3)
-```
-
-## Octahedron
+# Octahedron
 
 ```{python}
 #| echo: false
@@ -213,6 +223,8 @@ print("Eigenvalues:")
 print(np.round(eigvals, 4))
 ```
 
+## λ = -2 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -220,6 +232,8 @@ print(np.round(eigvals, 4))
 
 embed(O, eigenvalue = -2)
 ```
+
+## λ = 0 
 
 ```{python}
 #| echo: false
@@ -229,15 +243,7 @@ embed(O, eigenvalue = -2)
 embed(O, eigenvalue = 0)
 ```
 
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-embed(O, eigenvalue = 4)
-```
-
-## Dodecahedron
+# Dodecahedron
 
 ```{python}
 #| echo: false
@@ -272,6 +278,8 @@ print("Eigenvalues:")
 print(np.round(eigvals, 4))
 ```
 
+## λ = -√5
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -279,6 +287,8 @@ print(np.round(eigvals, 4))
 
 embed(D, eigenvalue = -2.2361)
 ```
+
+## λ = -2
 
 ```{python}
 #| echo: false
@@ -288,6 +298,8 @@ embed(D, eigenvalue = -2.2361)
 embed(D, eigenvalue = -2)
 ```
 
+## λ = 0 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -295,6 +307,8 @@ embed(D, eigenvalue = -2)
 
 embed(D, eigenvalue = 0)
 ```
+
+## λ = 1
 
 ```{python}
 #| echo: false
@@ -304,6 +318,8 @@ embed(D, eigenvalue = 0)
 embed(D, eigenvalue = 1)
 ```
 
+## λ = √5
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -312,15 +328,7 @@ embed(D, eigenvalue = 1)
 embed(D, eigenvalue = 2.2361)
 ```
 
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-embed(D, eigenvalue = 3)
-```
-
-## Icosahedron
+# Icosahedron
 
 ```{python}
 #| echo: false
@@ -347,6 +355,8 @@ print("Eigenvalues:")
 print(np.round(eigvals, 4))
 ```
 
+## λ = -√5 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -354,6 +364,8 @@ print(np.round(eigvals, 4))
 
 embed(I, eigenvalue = -2.2361)
 ```
+
+## λ = -1 
 
 ```{python}
 #| echo: false
@@ -363,6 +375,8 @@ embed(I, eigenvalue = -2.2361)
 embed(I, eigenvalue = -1)
 ```
 
+## λ = √5 
+
 ```{python}
 #| echo: false
 #| warning: false
@@ -371,14 +385,4 @@ embed(I, eigenvalue = -1)
 embed(I, eigenvalue = 2.2361)
 ```
 
-```{python}
-#| echo: false
-#| warning: false
-#| message: false
-
-embed(I, eigenvalue = 5)
-```
-
 Back to the original page: [Platonic Solids](index.qmd)
-
-

@@ -68,7 +68,7 @@
         "\n",
         "## Tetrahedron"
       ],
-      "id": "a925a06c"
+      "id": "55498a86"
     },
     {
       "cell_type": "code",
@@ -317,7 +317,7 @@
         "\n",
         "fig"
       ],
-      "id": "68a12d05",
+      "id": "6ccded92",
       "execution_count": null,
       "outputs": []
     },
@@ -346,7 +346,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "bcabb6d0"
+      "id": "98badfe6"
     },
     {
       "cell_type": "code",
@@ -399,7 +399,7 @@
         "    r\"\\sigma(Q)=\\{(2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "eadd2449",
+      "id": "9922889a",
       "execution_count": null,
       "outputs": []
     },
@@ -441,7 +441,7 @@
         "\n",
         "## Cube"
       ],
-      "id": "d9627f81"
+      "id": "f5ed829d"
     },
     {
       "cell_type": "code",
@@ -694,7 +694,7 @@
         "\n",
         "fig"
       ],
-      "id": "6a10c57e",
+      "id": "cc4360ee",
       "execution_count": null,
       "outputs": []
     },
@@ -724,7 +724,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "edf9a0e6"
+      "id": "174afd7d"
     },
     {
       "cell_type": "code",
@@ -786,7 +786,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt6)^1, (2)^3, (\\sqrt2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "e91defae",
+      "id": "6f5faa83",
       "execution_count": null,
       "outputs": []
     },
@@ -824,7 +824,7 @@
         "\n",
         "## Octahedron"
       ],
-      "id": "ffa2602e"
+      "id": "a2b6d7bb"
     },
     {
       "cell_type": "code",
@@ -1077,7 +1077,7 @@
         "\n",
         "fig"
       ],
-      "id": "bba6cbcc",
+      "id": "0d6ec0c0",
       "execution_count": null,
       "outputs": []
     },
@@ -1106,7 +1106,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "922a5a48"
+      "id": "332ef98f"
     },
     {
       "cell_type": "code",
@@ -1166,7 +1166,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt6)^2, (2)^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "3d604faa",
+      "id": "786cba79",
       "execution_count": null,
       "outputs": []
     },
@@ -1204,7 +1204,7 @@
         "\n",
         "## Dodecahedron"
       ],
-      "id": "a2f38348"
+      "id": "4f6e7af9"
     },
     {
       "cell_type": "code",
@@ -1470,7 +1470,7 @@
         "\n",
         "fig"
       ],
-      "id": "75546583",
+      "id": "ef18ccf7",
       "execution_count": null,
       "outputs": []
     },
@@ -1501,7 +1501,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "36cfa43d"
+      "id": "5ab42343"
     },
     {
       "cell_type": "code",
@@ -1575,7 +1575,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt{3+\\sqrt5})^3, (\\sqrt5)^4, (\\sqrt3)^4, (\\sqrt2)^5, (\\sqrt{3-\\sqrt5})^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "dcf0391b",
+      "id": "b3435065",
       "execution_count": null,
       "outputs": []
     },
@@ -1613,7 +1613,7 @@
         "\n",
         "## Icosahedron"
       ],
-      "id": "e375c94f"
+      "id": "5ccae5a3"
     },
     {
       "cell_type": "code",
@@ -1881,7 +1881,7 @@
         "\n",
         "fig"
       ],
-      "id": "70ee2c94",
+      "id": "f54547af",
       "execution_count": null,
       "outputs": []
     },
@@ -1912,7 +1912,7 @@
         "\n",
         "### Spectral Properties"
       ],
-      "id": "ae2e7777"
+      "id": "6d01a2bb"
     },
     {
       "cell_type": "code",
@@ -1978,7 +1978,7 @@
         "    r\"\\sigma(Q)=\\{(\\sqrt{5+\\sqrt5})^3, (\\sqrt6)^5, (\\sqrt{5-\\sqrt5})^3, (0)^1\\}\"\n",
         "))"
       ],
-      "id": "d05d7ae9",
+      "id": "a476a5a5",
       "execution_count": null,
       "outputs": []
     },
@@ -2166,7 +2166,7 @@
         "\n",
         "These spectral properties provide insight into connectivity, combinatorial structure, and symmetry, making spectral graph theory an effective tool for studying Platonic solids."
       ],
-      "id": "442b1c52"
+      "id": "e9f013b7"
     }
   ],
   "metadata": {

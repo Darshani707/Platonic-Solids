@@ -1,0 +1,100 @@
+---
+title: "Hearing the Platonic Solids"
+subtitle: "Graph Sonification"
+author: "Darshani P. Gole"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: minty
+    code-fold: false
+    smooth-scroll: true
+    embed-resources: true
+  pdf:
+    documentclass: article
+execute:
+  echo: false
+  warning: false
+  message: false
+editor: visual
+jupyter: python3
+project: 
+  type: website
+---
+
+# Types of Graph Sonification Using Spectral Methods
+
+In spectral graph sonification, different components of the eigen-decomposition (eigenvalues, eigenvectors, and eigenspaces) encode different aspects of structure. Each carries a distinct type of information and produces a different auditory experience.
+
+## Eigenvalue-Based Sonification
+
+Eigenvalues of graph matrices (such as the Laplacian or Adjacency matrix) are mapped to sound parameters such as pitch or frequency. Each eigenvalue corresponds to a structural mode of the graph.
+
+Small eigenvalues correspond to low-frequency, smooth, or global structures, while large eigenvalues correspond to high-frequency, localized, or rapidly varying structures. The distribution of eigenvalues can be heard as the overall spectral shape of the graph.
+
+## Eigenvector-Based Sonification
+
+Eigenvectors describe how each node participates in a given eigenmode. In sonification, eigenvector components are mapped to amplitude, timbre, or spatial position.
+
+This reveals how structure is distributed across the graph. Nodes with similar values behave similarly in sound, while sign changes can produce phase inversion or stereo separation. Eigenvectors highlight spatial patterns, clustering, and symmetry.
+
+In the eigenvalue sonification, each distinct Laplacian eigenvalue is assigned a pitch. Larger eigenvalues correspond to higher pitches, while smaller eigenvalues correspond to lower pitches. Eigenvalue multiplicities are represented through additional texture or beating effects.
+
+The following properties can be perceived:
+
+- Number of pitch regions: number of distinct eigenvalues.
+- Pitch range: spread of the spectrum.
+- Gaps between notes: spectral gaps between eigenvalues.
+- Wobble or beating: eigenvalue multiplicity.
+
+Since large multiplicities often arise from graph symmetries, highly symmetric graphs such as the Platonic solids tend to exhibit stronger and more prominent textures than graphs with little symmetry.
+
+### Platonics
+
+- Tetrahedron
+
+<audio controls>
+  <source src="sounds/tetrahedron_eigenvalues.mp3" type="audio/mpeg">
+</audio>
+
+- Cube
+
+<audio controls>
+  <source src="sounds/cube_eigenvalues.mp3" type="audio/mpeg">
+</audio>
+
+- Octahedron
+
+<audio controls>
+  <source src="sounds/octahedron_eigenvalues.mp3" type="audio/mpeg">
+</audio>
+
+- Dodecahedron
+
+<audio controls>
+  <source src="sounds/dodecahedron_eigenvalues.mp3" type="audio/mpeg">
+</audio>
+
+- Icosahedron
+
+<audio controls>
+  <source src="sounds/icosahedron_eigenvalues.mp3" type="audio/mpeg">
+</audio>
+
+## Eigenspace-Based Sonification
+
+When eigenvalues have multiplicity greater than one, they form eigenspaces. Instead of using a single eigenvector, the entire subspace is used to generate sound.
+
+This produces richer sound textures. Each eigenspace acts as a single sound object with internal degrees of freedom. Rotations within the space or combinations of basis vectors create evolving timbres. Degenerate eigenvalues lead to more complex and layered sound structures.
+
+In the eigenspace sonification, each eigenspace is represented by a pitch associated with its eigenvalue. The dimension of the eigenspace (equivalently, the multiplicity of the corresponding eigenvalue) is encoded through the richness of the sound.
+
+The following properties can be perceived:
+
+- Number of notes: number of eigenspaces (distinct eigenvalues).
+- Pitch: spectral position of the eigenspace.
+- Timbre or richness: dimension of the eigenspace.
+- Distribution of rich and simple tones: distribution of eigenspace dimensions across the spectrum.
+
+This sonification emphasizes how the graph decomposes into eigenspaces rather than focusing solely on the spectrum.
